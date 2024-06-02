@@ -1,4 +1,3 @@
-// src/main/java/com/kubit/develup/entity/Post.java
 package com.example.develup.entity;
 
 import jakarta.persistence.*;

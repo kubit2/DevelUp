@@ -1,9 +1,10 @@
 package com.example.develup.entity;
 
+import lombok.Data;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-import java.util.Date;
-
+@Data
 @Entity
 @Table(name = "posts")
 public class Post {
@@ -12,16 +13,5 @@ public class Post {
     private Long id;
     private String title;
     private String content;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-
-    public Post() {
-        // JPA only
-    }
-
-    public Post(String title, String content) {
-        this.title = title;
-        this.content = content;
-        this.createdAt = new Date();
-    }
+    private LocalDateTime createdAt = LocalDateTime.now();
 }

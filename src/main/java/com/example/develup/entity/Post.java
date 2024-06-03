@@ -14,4 +14,15 @@ public class Post {
     private String title;
     private String content;
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    // 기본 생성자
+    public Post() {
+    }
+
+    // 생성자
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
+        this.createdAt = LocalDateTime.now();
+    }
 }

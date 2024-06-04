@@ -39,4 +39,14 @@ public class PostController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/{post_id}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long post_id){
+        try {
+            postService.deletePost(post_id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e){
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

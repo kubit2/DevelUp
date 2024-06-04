@@ -38,4 +38,8 @@ public class PostService {
             return postRepository.save(post);
         }).orElseThrow(() -> new RuntimeException("Post not found with id" + id));
     }
+
+    public void deletePost(Long id){
+        postRepository.deleteById(id);
+    }
 }

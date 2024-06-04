@@ -29,4 +29,14 @@ public class PostController {
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
     }
+
+    @PutMapping("/{post_id}")
+    public ResponseEntity<Post> updatePost(@PathVariable Long post_id, @RequestBody Post newPostData){
+        try {
+            Post updatedPost = postService.updatePost(post_id, newPostData);
+            return ResponseEntity.ok(updatedPost);
+        } catch (RuntimeException e){
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

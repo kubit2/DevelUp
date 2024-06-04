@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -22,5 +23,17 @@ public class PostService {
 
     public List<Post> getAllPosts(){
         return postRepository.findAll();
+    }
+
+    public Optional<Post> getPostById(Long id){
+        return postRepository.findById(id);
+    }
+
+    public Post updatePost(Long id, Post newPostData) {
+        return postRepository.findById(id).map(post -> {
+            post.setTitle(newPostData.getTitle());
+            post.setContent(newPostData.getContent());
+            return postRepository.save(post);
+        }).orElseThrow(() -> new RuntimeException("Post not found with id" + id));
     }
 }
